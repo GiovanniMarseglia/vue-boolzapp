@@ -3,6 +3,7 @@ const { createApp } = Vue
   createApp({
     data() {
       return {
+        ora: null,
         posizione: 0,
         contacts: [
           {
@@ -173,7 +174,19 @@ const { createApp } = Vue
     methods: {
       read(index){
         this.posizione=index
-      }
-      
+      },
+      orario(index) {
+        const ora = this.contacts[this.posizione].messages[index].date.split(" ");
+        return ora[1].split(":").slice(0, 2).join(":");
+      },
     },
+    computed: {
+      orariReattivi() {
+        return this.contacts[this.posizione].messages.map(message => {
+          ora = message.date.split(" ");
+          return ora[1].split(":").slice(0, 2).join(":");
+        });
+      },
+    },
+
   }).mount('#app')

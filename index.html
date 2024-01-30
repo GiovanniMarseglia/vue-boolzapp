@@ -125,7 +125,7 @@
                            <div v-if="element.status==`received`" class="d-flex a ">
                                 <div class="d-flex bg-warning p-2 px-3 rounded" >
                                     <div class="msgdest p-1 px-2 rounded">{{element.message}}</div>
-                                    <span class="d-flex align-items-end">12:00</span>
+                                    <span class="d-flex align-items-end">{{orario(index)}}</span>
                                 </div>
                             </div>
 
@@ -133,7 +133,7 @@
                                 <div class="d-flex bg-success p-2 px-4 rounded ">
 
                                     <div class="msgmitt">{{element.message}} </div>
-                                    <span class="d-flex align-items-end">12:00</span>
+                                    <span class="d-flex align-items-end">{{orario(index)}}</span>
                                 </div>
                             </div>
  
