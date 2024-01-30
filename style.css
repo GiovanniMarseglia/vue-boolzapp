@@ -8,7 +8,7 @@ body{
 
 
 .ldiv, .rdiv{
-    min-height: 100%;
+    min-height: 90vh;
 }
 
 
@@ -37,23 +37,69 @@ u{
     cursor: pointer;
 }
 
-.infouser span:last-child{
+.infouser span:last-child,.ruser div:first-of-type span:last-child{
     font-size: 12px;
     color: rgba(128, 128, 128, 0.829);
 }
 
-.infouser span:first-child{
+.infouser span:first-child, .ruser div:first-of-type span:first-child{
     font-weight: 600;
 }
 
 
 .carduser{
-   
     background-color: green;
+}
 
+.lore{
+    font-size: 10px;
 }
 
 
 .overflow-y-scroll{
-    height: 80%;
+    height: 72vh;
 }
+
+.ruser div:last-child i, .rinput i{
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+
+.rchat{
+    min-height: calc(100% - 60px - 54px);
+}
+
+
+.rinput{
+    min-height: 40px;
+    background-color: red;
+}
+
+
+.a{
+    width: 100%;
+}
+
+.msgmitt{
+    max-width: 650px;
+}
+
+
+.msgmitt+span{
+    font-size: 10px;
+}
+
+.msgdest{
+    max-width: 650px;
+}
+
+.msgdest+span{
+    font-size: 10px;
+}
+
+
+
+
+
