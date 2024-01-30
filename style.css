@@ -7,6 +7,8 @@ body{
 }
 
 
+/* inizio parte di sinistra */
+
 .ldiv, .rdiv{
     min-height: 90vh;
 }
@@ -23,11 +25,11 @@ figure img{
     max-width: 50px;
 }
 
+
+/*card notifiche */
 .lnot{
     min-height: 70px;
 }
-
-
 
 .infonotifiche{
     font-size: 11px;
@@ -37,10 +39,26 @@ u{
     cursor: pointer;
 }
 
-.infouser span:last-child,.ruser div:first-of-type span:last-child{
+
+
+/* card degli utenti */
+
+.infouser span:last-child, .ruser div:first-of-type span:last-child{
     font-size: 12px;
     color: rgba(128, 128, 128, 0.829);
+    
 }
+
+
+.infouser span:last-child{
+    text-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+   
+}
+
+
 
 .infouser span:first-child, .ruser div:first-of-type span:first-child{
     font-weight: 600;
@@ -61,18 +79,22 @@ u{
     height: 72vh;
 }
 
+
+
+/* inizio parte di destra */
+
+
+/* card utente chat */
 .ruser div:last-child i, .rinput i{
     font-size: 20px;
     cursor: pointer;
 }
 
 
-
+/* sezione della chat con input */
 .rchat{
     min-height: calc(100% - 60px - 54px);
 }
-
-
 .rinput{
     min-height: 40px;
     background-color: red;
@@ -83,6 +105,8 @@ u{
     width: 100%;
 }
 
+
+/* messaggi input/output */
 .msgmitt{
     max-width: 650px;
 }
