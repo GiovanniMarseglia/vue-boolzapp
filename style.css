@@ -1,0 +1,59 @@
+body{
+    height: 100vh;
+}
+
+.container-fluid .row:first-child{
+ min-height: 95vh;
+}
+
+
+.ldiv, .rdiv{
+    min-height: 100%;
+}
+
+
+.lprop, .ruser{
+    min-height: 60px;
+    background-color: red;
+}
+
+
+figure img{
+    border-radius: 999rem 999rem ;
+    max-width: 50px;
+}
+
+.lnot{
+    min-height: 70px;
+}
+
+
+
+.infonotifiche{
+    font-size: 11px;
+}
+
+u{
+    cursor: pointer;
+}
+
+.infouser span:last-child{
+    font-size: 12px;
+    color: rgba(128, 128, 128, 0.829);
+}
+
+.infouser span:first-child{
+    font-weight: 600;
+}
+
+
+.carduser{
+   
+    background-color: green;
+
+}
+
+
+.overflow-y-scroll{
+    height: 80%;
+}
