@@ -1,10 +1,12 @@
+
 const { createApp } = Vue
 
   createApp({
+
     data() {
       return {
-        ora: null,
         posizione: 0,
+        newmessage: null,
         contacts: [
           {
           name: 'Michele',
@@ -172,6 +174,7 @@ const { createApp } = Vue
       }
     },
     methods: {
+      
       read(index){
         this.posizione=index
       },
@@ -179,14 +182,25 @@ const { createApp } = Vue
         const ora = this.contacts[this.posizione].messages[index].date.split(" ");
         return ora[1].split(":").slice(0, 2).join(":");
       },
-    },
-    computed: {
-      orariReattivi() {
-        return this.contacts[this.posizione].messages.map(message => {
-          ora = message.date.split(" ");
-          return ora[1].split(":").slice(0, 2).join(":");
-        });
+
+      lstorario(index){
+        const ora = this.contacts[index].messages[this.contacts[index].messages.length-1].date.split(" ");
+        return ora[1].split(":").slice(0, 2).join(" ");
       },
-    },
+      add(){
+        const now = luxon.DateTime.local();
+        const formattedDateTime = now.toFormat('dd/MM/yyyy HH:mm:ss');
+        
+       
+        this.contacts[this.posizione].messages.push({date:formattedDateTime,message:this.newmessage,status:"sent"})
+        setTimeout(()=>{
+          this.contacts[this.posizione].messages.push({date:formattedDateTime,message:"ok",status:"received"})
+        },1000)
+        this.newmessage=""
+      }
+    }
+
+    
+    
 
   }).mount('#app')
