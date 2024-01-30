@@ -74,9 +74,8 @@ u{
     font-size: 10px;
 }
 
-
-.overflow-y-scroll{
-    height: 72vh;
+.scroll{
+    height: calc(100% - 60px - 70px - 46px);
 }
 
 
