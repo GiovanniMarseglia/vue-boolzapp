@@ -53,21 +53,26 @@
                             <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
                             <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="Username">
                           </div>
+
+
+
+
+
                     
                     <!-- card degli utenti -->
                     <div class="overflow-y-scroll ">
-                        <div class="d-flex justify-content-between px-2 carduser">
+                        <div  v-for="(element, index) in contacts" class="d-flex justify-content-between px-2 carduser" @click="read(index)">
                             <div class="d-flex gap-2">
                                 <!-- avatar -->
                                 <figure>
-                                    <img src="./img/avatar_2.jpg" alt="">
+                                    <img :src="contacts[index].avatar" alt="">
                                 </figure>
 
 
                                 <!-- nome e ultimo accesso -->
                                 <div class="infouser d-flex flex-column">
-                                    <span>Michele</span>
-                                    <span>Ultimo messaggio inviato</span>
+                                    <span>{{element.name}}</span>
+                                    <span>{{element.messages[element.messages.length-1].message}}</span>
                                 </div>
                             </div>
 
@@ -76,7 +81,6 @@
                                 <span>12:00</span>
                             </div>
                         </div>
-
 
                     </div>
                 </div>
@@ -95,13 +99,13 @@
                     <div class="ruser d-flex justify-content-between align-items-center">
                         <div class="d-flex align-items-center">
                             <figure class="p-1 mb-0 px-2">
-                                <img src="./img/avatar_1.jpg" alt="user-picture">
+                                <img :src="contacts[posizione].avatar" alt="user-picture">
                             </figure>
 
                             <!-- nome e accesso -->
                             <div class="d-flex flex-column">
-                                <span>Michele</span>
-                                <span>Ultimo accesso oggi alle 12:00</span>
+                                <span>{{contacts[posizione].name}}</span>
+                                <span>Ultimo accesso oggi alle <span>12:00</span></span>
                             </div>
                         </div>
                         <!-- icone utente chat -->
@@ -116,23 +120,25 @@
 
 
                     <!-- contenitore con lo spazio per chattare -->
-                    <div class="rchat bg-light overflow-y-scroll px-5 pt-4 d-flex flex-column gap-2">
-
-                        <div class="d-flex a ">
-                            <div class="d-flex bg-warning p-2 px-3 rounded" >
-                                <div class="msgdest p-1 px-2 rounded">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, unde architecto odit fugiat culpa sit temporibus. Reiciendis provident corrupti quod similique enim ipsam, saepe commodi sint cum fugiat, quia illum!</div>
-                                <span class="d-flex align-items-end">12:00</span>
+                    <div class="rchat bg-light overflow-y-scroll px-5 pt-4 d-flex flex-column gap-3"  >
+                        <div v-for="(element, index) in contacts[posizione].messages" :key="index" >
+                           <div v-if="element.status==`received`" class="d-flex a ">
+                                <div class="d-flex bg-warning p-2 px-3 rounded" >
+                                    <div class="msgdest p-1 px-2 rounded">{{element.message}}</div>
+                                    <span class="d-flex align-items-end">12:00</span>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="d-flex justify-content-end a">
-                            <div class="d-flex bg-success p-2 px-4 rounded ">
+                            <div v-else="element.status==`sent`" class="d-flex justify-content-end a">
+                                <div class="d-flex bg-success p-2 px-4 rounded ">
 
-                                <div class="msgmitt">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas dolorum sequi rerum, reprehenderit aliquid, voluptates dolore possimus magni nobis repudiandae inventore dolorem explicabo recusandae officiis totam ratione ipsum, ab odio?</div>
-                                <span class="d-flex align-items-end">12:00</span>
+                                    <div class="msgmitt">{{element.message}} </div>
+                                    <span class="d-flex align-items-end">12:00</span>
+                                </div>
                             </div>
+ 
                         </div>
-
+                            
                         
                         
                     </div>
