@@ -4,28 +4,30 @@ body{
 
 }
 
-i{
-    color: #AFAFAF;
+.row{
+    height: 90vh;
+    
 }
 
-.container-fluid .row:first-child{
- min-height: 95vh;
+i{
+    color: #AFAFAF;
 }
 
 
 /* inizio parte di sinistra */
 
 .ldiv, .rdiv{
-    min-height: 90vh;
     background-color: white;
+    height: 100%;
 }
 
-
 .lprop, .ruser{
-    min-height: 60px;
     background-color: #E9E9E9;
 }
 
+.lprop{
+    height: 58px;
+}
 
 figure img{
     border-radius: 999rem 999rem ;
@@ -35,7 +37,7 @@ figure img{
 
 /*card notifiche */
 .lnot{
-    min-height: 70px;
+    height: 58px;
     background-color: #8DD9FC;
 }
 
@@ -67,6 +69,12 @@ figure img{
     
 }
 
+.abc{
+    height: calc(100% - 46px - 58px - 58px);
+    overflow-y: scroll
+   
+}
+
 
 .infousermsg{
     font-size: 12px;
@@ -84,6 +92,8 @@ figure img{
 }
 
 
+
+
 .carduser{
     cursor: pointer;
 }
@@ -95,11 +105,6 @@ figure img{
 .lore{
     font-size: 10px;
 }
-
-.scroll{
-    height: calc(100% - 60px - 70px - 46px);
-}
-
 
 
 /* inizio parte di destra */
@@ -114,10 +119,10 @@ figure img{
 
 /* sezione della chat con input */
 .rchat{
-    height: calc(100% - 114px);
-    max-height: calc(100vh - 200px);
-    background-image: url(./img/mine.jpg);
     overflow-y: scroll;
+    height: calc(100% - 54px - 58px);
+    background-image: url(./img/mine.jpg);
+    
 }
 
 .rinput{
