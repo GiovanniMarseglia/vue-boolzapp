@@ -1,5 +1,7 @@
 body{
     height: 100vh;
+    background-image:linear-gradient(to bottom,#009587 0px,#009587 15vh,#D9DAD3 15vh,#D9DAD3 100%);
+
 }
 
 .container-fluid .row:first-child{
@@ -55,7 +57,6 @@ u{
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 200px;
-   
 }
 
 
@@ -97,11 +98,6 @@ u{
 .rinput{
     min-height: 40px;
     background-color: red;
-}
-
-
-.a{
-    width: 100%;
 }
 
 

@@ -174,10 +174,6 @@ const { createApp } = Vue
       }
     },
     methods: {
-      
-      read(index){
-        this.posizione=index
-      },
       orario(index) {
         const ora = this.contacts[this.posizione].messages[index].date.split(" ");
         return ora[1].split(":").slice(0, 2).join(":");
@@ -187,6 +183,8 @@ const { createApp } = Vue
         const ora = this.contacts[index].messages[this.contacts[index].messages.length-1].date.split(" ");
         return ora[1].split(":").slice(0, 2).join(" ");
       },
+      
+      
       add(){
         const now = luxon.DateTime.local();
         const formattedDateTime = now.toFormat('dd/MM/yyyy HH:mm:ss');
@@ -198,9 +196,24 @@ const { createApp } = Vue
         },1000)
         this.newmessage=""
       }
-    }
-
-    
+    },
+    computed:{
+      ultimoaccesso(){
+        
+        let i=this.contacts[this.posizione].messages.length
+        
+        while(this.contacts[this.posizione].messages[i-1].status != "received"){
+          console.log(i)
+          if(i==0){
+            return "non visibile"
+          }
+          i--
+          
+        }
+        return "Ultimo accesso oggi alle " + this.orario(i-1)
+        
+      }
+      }
     
 
   }).mount('#app')

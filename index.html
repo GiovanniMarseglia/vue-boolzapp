@@ -13,7 +13,7 @@
     
     <div id="app">
         
-        <div class="container-fluid ">
+        <div class="container-fluid">
             <div class="row d-flex justify-content-center pt-5">
                 <!-- blocco di sinistra -->
                 <div class="col-2 bg-primary ldiv px-0">
@@ -62,7 +62,7 @@
                     
                     <!-- card degli utenti -->
                     <div class="overflow-y-scroll scroll">
-                        <div  v-for="(element, index) in contacts" class="d-flex justify-content-between px-2 carduser" @click="read(index)">
+                        <div  v-for="(element, index) in contacts" class=" d-flex justify-content-between px-2 carduser" @click="posizione=index">
                             <div class="d-flex gap-2">
                                 <!-- avatar -->
                                 <figure>
@@ -107,7 +107,7 @@
                             <!-- nome e accesso -->
                             <div class="d-flex flex-column">
                                 <span>{{contacts[posizione].name}}</span>
-                                <span>Ultimo accesso oggi alle <span>12:00</span></span>
+                                <span>{{ultimoaccesso}}</span>
                             </div>
                         </div>
                         <!-- icone utente chat -->
@@ -124,15 +124,17 @@
                     <!-- contenitore con lo spazio per chattare -->
                     <div class="rchat bg-light overflow-y-scroll px-5 pt-4 d-flex flex-column gap-3"  >
                         <div v-for="(element, index) in contacts[posizione].messages" :key="index" >
-                           <div v-if="element.status==`received`" class="d-flex a ">
+
+                            <!-- if else per i messaggi ricevuti o inviati -->
+                           <div v-if="element.status==`received`" class="d-flex w-100">
                                 <div class="d-flex bg-warning p-2 px-3 rounded" >
                                     <div class="msgdest p-1 px-2 rounded">{{element.message}}</div>
                                     <span class="d-flex align-items-end">{{orario(index)}}</span>
                                 </div>
                             </div>
 
-                            <div v-else="element.status==`sent`" class="d-flex justify-content-end a">
-                                <div class="d-flex bg-success p-2 px-4 rounded ">
+                            <div v-else="element.status==`sent`" class="d-flex justify-content-end w-100">
+                                <div class="d-flex bg-success p-2 px-4 rounded gap-2">
 
                                     <div class="msgmitt">{{element.message}} </div>
                                     <span class="d-flex align-items-end">{{orario(index)}}</span>
