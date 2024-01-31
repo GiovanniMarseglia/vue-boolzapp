@@ -205,7 +205,7 @@ const { createApp } = Vue
       },
 
       lstorario(index){
-        if(this.contacts[index].messages[this.contacts[index].messages.length>0]){
+        if(this.contacts[index].messages.length > 0){
         const ora = this.contacts[index].messages[this.contacts[index].messages.length-1].date.split(" ");
         return ora[1].split(":").slice(0, 2).join(" ");
         }

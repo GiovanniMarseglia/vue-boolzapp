@@ -74,7 +74,7 @@ figure img{
     text-wrap: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 200px;
+    max-width: 150px;
 }
 
 
@@ -114,9 +114,12 @@ figure img{
 
 /* sezione della chat con input */
 .rchat{
-    min-height: calc(100% - 60px - 54px);
+    height: calc(100% - 114px);
+    max-height: calc(100vh - 200px);
     background-image: url(./img/mine.jpg);
+    overflow-y: scroll;
 }
+
 .rinput{
     min-height: 40px;
     background-color: #F3EDE9;
