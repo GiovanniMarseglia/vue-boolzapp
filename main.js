@@ -5,6 +5,7 @@ const { createApp } = Vue
 
     data() {
       return {
+        stato:null,
         word:null,
         presente:[],
         ricerca:null,
@@ -177,7 +178,7 @@ const { createApp } = Vue
       }
     },
     methods: {
-      remove(word){
+      removeUser(word){
         this.presente=[]
         word=word.charAt(0).toUpperCase() + word.slice(1)
         this.contacts.forEach((element, index) =>{
@@ -204,8 +205,10 @@ const { createApp } = Vue
       },
 
       lstorario(index){
+        if(this.contacts[index].messages[this.contacts[index].messages.length>0]){
         const ora = this.contacts[index].messages[this.contacts[index].messages.length-1].date.split(" ");
         return ora[1].split(":").slice(0, 2).join(" ");
+        }
       },
       
       
@@ -219,31 +222,41 @@ const { createApp } = Vue
           this.contacts[this.posizione].messages.push({date:formattedDateTime,message:"ok",status:"received"})
         },1000)
         this.newmessage=""
-      }
+      },
+      change(event){
+        event.target.setAttribute("class","cambio1");
+      },
+      statoup(index){
+        this.stato=index
+        
+      },
+      removemsg(index){
+        this.contacts[this.posizione].messages.splice(index, 1)
+        this.stato=null
+      },
+      
     },
     watch:{
       ricerca(word){
         // aggiungere la funzione remove presa dal methods
         
         
-        this.remove(word)
+        this.removeUser(word)
       }
     },
     computed:{
       
       ultimoaccesso(){
-        
-        let i=this.contacts[this.posizione].messages.length
-        
-        while(this.contacts[this.posizione].messages[i-1].status != "received"){
-          if(i==0){
-            return "non visibile"
+        let messages = this.contacts[this.posizione].messages;
+        let i = messages.length;
+      
+        while (i > 0) {
+          i--;
+          if (messages[i].status === "received") {
+            return "Ultimo accesso oggi alle " + this.orario(i);
           }
-          i--
-          
         }
-        return "Ultimo accesso oggi alle " + this.orario(i-1)
-        
+        return "non visibile";
       }
       },
     

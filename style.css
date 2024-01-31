@@ -37,8 +37,9 @@ figure img{
     font-size: 11px;
 }
 
-u{
+.pointer{
     cursor: pointer;
+   
 }
 
 
@@ -117,6 +118,14 @@ u{
 
 .msgdest+span{
     font-size: 10px;
+}
+
+
+
+.ghost{
+    background-color: white;
+    min-height: 100px;
+    min-width: 150px;
 }
 
 

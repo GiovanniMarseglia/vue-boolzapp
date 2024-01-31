@@ -40,7 +40,7 @@
                         <i class="bi bi-bell-slash-fill bg-light rounded-5 px-2 py-1 fs-5"></i>
                         <div class="d-flex flex-column infonotifiche "> 
                             <span><strong>Ricevi notifiche di nuovi messaggi</strong></span>
-                            <span><u>Attiva notifiche desktop</u></span>
+                            <span class="pointer"><u>Attiva notifiche desktop</u></span>
                         </div>
                     </div>
 
@@ -74,7 +74,9 @@
                                 <div class="infouser d-flex flex-column">
                                     <span>{{element.name}}</span>
                                     
-                                    <span>{{element.messages[element.messages.length-1].message}}</span>
+                                    <span v-if="element.messages.length > 0">
+                                        {{ element.messages[element.messages.length - 1].message }}
+                                      </span>
                                 </div>
                             </div>
 
@@ -122,20 +124,31 @@
                         <div v-for="(element, index) in contacts[posizione].messages" :key="index" >
 
                             <!-- if else per i messaggi ricevuti o inviati -->
-                           <div v-if="element.status==`received`" class="d-flex w-100">
-                                <div class="d-flex bg-warning p-2 px-3 rounded" >
+                           <div v-if="element.status==`received`" class="d-flex w-100  position-relative" >
+                                <div @click="statoup(index)" class="d-flex bg-warning p-2 px-3 rounded pointer">
                                     <div class="msgdest p-1 px-2 rounded">{{element.message}}</div>
                                     <span class="d-flex align-items-end">{{orario(index)}}</span>
                                 </div>
+                                <div :class="stato==index ? `d-flex`:`d-none`" class="flex-column p-3 gap-2 justify-content-center position-absolute ghost top-50 start-0 z-1">
+                                     <!-- box a comparsa -->
+                                    <span class="pointer">Message info</span>
+                                    <span @click="removemsg(index)" class="pointer">Delete message</span>
+                                </div>
                             </div>
 
-                            <div v-else="element.status==`sent`" class="d-flex justify-content-end w-100">
-                                <div class="d-flex bg-success p-2 px-4 rounded gap-2">
+                            <div v-else="element.status==`sent`" class="d-flex justify-content-end w-100  position-relative">
+                                <div @click="statoup(index)" class="d-flex bg-success p-2 px-4 rounded gap-2 pointer">
 
                                     <div class="msgmitt">{{element.message}} </div>
                                     <span class="d-flex align-items-end">{{orario(index)}}</span>
                                 </div>
+                                <!-- box a comparsa -->
+                                <div :class="stato==index ? `d-flex`:`d-none`" class=" flex-column p-3 gap-2 justify-content-center position-absolute ghost top-50 end-0 z-1">
+                                    <span class="pointer">Message info</span>
+                                    <span @click="removemsg(index)" class="pointer">Delete message</span>
+                                </div>
                             </div>
+                           
  
                         </div>
                             
