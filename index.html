@@ -52,7 +52,7 @@
 
                         <div class="input-group p-1 ">
                             <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-                            <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="Username">
+                            <input type="text" v-model="ricerca" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="Username">
                           </div>
 
 
@@ -62,8 +62,8 @@
                     
                     <!-- card degli utenti -->
                     <div class="overflow-y-scroll scroll">
-                        <div  v-for="(element, index) in contacts" class=" d-flex justify-content-between px-2 carduser" @click="posizione=index">
-                            <div class="d-flex gap-2">
+                        <div  v-for="(element, index) in contacts" class=" d-flex justify-content-between px-2 carduser" @click="posizione=index,word=null,presente=[]" :style="presente.includes(index) ? `display:none!important` : `display:flex!important`">
+                            <div  class="d-flex gap-2">
                                 <!-- avatar -->
                                 <figure>
                                     <img :src="contacts[index].avatar" alt="">
@@ -86,10 +86,6 @@
 
                     </div>
                 </div>
-
-
-
-
 
 
 

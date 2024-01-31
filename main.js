@@ -5,6 +5,9 @@ const { createApp } = Vue
 
     data() {
       return {
+        word:null,
+        presente:[],
+        ricerca:null,
         posizione: 0,
         newmessage: null,
         contacts: [
@@ -174,6 +177,27 @@ const { createApp } = Vue
       }
     },
     methods: {
+      remove(word){
+        this.presente=[]
+        word=word.charAt(0).toUpperCase() + word.slice(1)
+        this.contacts.forEach((element, index) =>{
+        if(word != ""){
+          
+        
+          if(element.name.includes(word)){
+            if(this.presente.includes(index)){
+              this.presente=[]
+            }
+          
+          }else{
+            this.presente.push(index)
+          }
+        }
+        })
+        console.log(this.presente,word)
+        
+      },
+
       orario(index) {
         const ora = this.contacts[this.posizione].messages[index].date.split(" ");
         return ora[1].split(":").slice(0, 2).join(":");
@@ -197,13 +221,21 @@ const { createApp } = Vue
         this.newmessage=""
       }
     },
+    watch:{
+      ricerca(word){
+        // aggiungere la funzione remove presa dal methods
+        
+        
+        this.remove(word)
+      }
+    },
     computed:{
+      
       ultimoaccesso(){
         
         let i=this.contacts[this.posizione].messages.length
         
         while(this.contacts[this.posizione].messages[i-1].status != "received"){
-          console.log(i)
           if(i==0){
             return "non visibile"
           }
@@ -213,7 +245,7 @@ const { createApp } = Vue
         return "Ultimo accesso oggi alle " + this.orario(i-1)
         
       }
-      }
+      },
     
 
   }).mount('#app')
