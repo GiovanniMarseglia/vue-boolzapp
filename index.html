@@ -16,7 +16,7 @@
         <div class="container-fluid">
             <div class="row d-flex justify-content-center pt-5">
                 <!-- blocco di sinistra -->
-                <div class="col-2 bg-primary ldiv px-0">
+                <div class="col-2 ldiv px-0">
                     <!-- contiene le informazioni del proprietario -->
                     <div class="lprop d-flex align-items-center justify-content-between px-1">
                         <div class="d-flex align-items-center gap-2">
@@ -36,8 +36,10 @@
                     </div>
 
                     <!-- info per notifiche -->
-                    <div class="lnot bg-secondary px-3 d-flex align-items-center gap-2">
-                        <i class="bi bi-bell-slash-fill bg-light rounded-5 px-2 py-1 fs-5"></i>
+                    <div class="lnot px-3 d-flex align-items-center gap-2">
+                        <div class="bg-light rounded-5 d-flex align-items-center justify-content-center py-1 px-2 bell">
+                            <i class="bi bi-bell-slash-fill" style="color: #8DD9FC;" ></i>
+                        </div>
                         <div class="d-flex flex-column infonotifiche "> 
                             <span><strong>Ricevi notifiche di nuovi messaggi</strong></span>
                             <span class="pointer"><u>Attiva notifiche desktop</u></span>
@@ -74,7 +76,7 @@
                                 <div class="infouser d-flex flex-column">
                                     <span>{{element.name}}</span>
                                     
-                                    <span v-if="element.messages.length > 0">
+                                    <span class="infousermsg" v-if="element.messages.length > 0">
                                         {{ element.messages[element.messages.length - 1].message }}
                                       </span>
                                 </div>
@@ -94,7 +96,7 @@
 
 
                 <!-- blocco di destra -->
-                <div class="col-8 bg-secondary rdiv px-0">
+                <div class="col-8 rdiv px-0">
                     <!-- card utente della chat -->
                     <div class="ruser d-flex justify-content-between align-items-center">
                         <div class="d-flex align-items-center">
@@ -125,7 +127,7 @@
 
                             <!-- if else per i messaggi ricevuti o inviati -->
                            <div v-if="element.status==`received`" class="d-flex w-100  position-relative" >
-                                <div @click="statoup(index)" class="d-flex bg-warning p-2 px-3 rounded pointer">
+                                <div @click="statoup(index)" class="d-flex  p-2 px-3 rounded pointer" style="background-color: white">
                                     <div class="msgdest p-1 px-2 rounded">{{element.message}}</div>
                                     <span class="d-flex align-items-end">{{orario(index)}}</span>
                                 </div>
@@ -137,7 +139,7 @@
                             </div>
 
                             <div v-else="element.status==`sent`" class="d-flex justify-content-end w-100  position-relative">
-                                <div @click="statoup(index)" class="d-flex bg-success p-2 px-4 rounded gap-2 pointer">
+                                <div @click="statoup(index)" class="d-flex p-2 px-4 rounded gap-2 pointer" style="background-color: #D4F9B8;">
 
                                     <div class="msgmitt">{{element.message}} </div>
                                     <span class="d-flex align-items-end">{{orario(index)}}</span>
@@ -162,9 +164,9 @@
 
                     <!-- spazio per scrivere  -->
                     <div class="rinput py-2 px-3 d-flex gap-4 align-items-center">
-                        <i class="bi bi-emoji-smile mx-3"></i>
+                        <i class="bi bi-emoji-smile mx-3" style="color: #6A7079;"></i>
                         <input @keyup.enter="add" v-model="newmessage" class="form-control" type="text" placeholder="Scrivi un messaggio">
-                        <i class="bi bi-mic-fill mx-3"></i>
+                        <i class="bi bi-mic-fill mx-3" style="color: #6A7079;"></i>
                     </div>
                 </div>
             </div>

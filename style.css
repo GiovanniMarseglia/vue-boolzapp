@@ -4,6 +4,10 @@ body{
 
 }
 
+i{
+    color: #AFAFAF;
+}
+
 .container-fluid .row:first-child{
  min-height: 95vh;
 }
@@ -13,12 +17,13 @@ body{
 
 .ldiv, .rdiv{
     min-height: 90vh;
+    background-color: white;
 }
 
 
 .lprop, .ruser{
     min-height: 60px;
-    background-color: red;
+    background-color: #E9E9E9;
 }
 
 
@@ -31,7 +36,13 @@ figure img{
 /*card notifiche */
 .lnot{
     min-height: 70px;
+    background-color: #8DD9FC;
 }
+
+.bell{
+    scale: 120%;
+}
+
 
 .infonotifiche{
     font-size: 11px;
@@ -44,16 +55,22 @@ figure img{
 
 
 
+.bi .bi-bell-slash-fill{
+    color: red;
+}
+
 /* card degli utenti */
 
-.infouser span:last-child, .ruser div:first-of-type span:last-child{
+.ruser div:first-of-type span:last-child{
     font-size: 12px;
     color: rgba(128, 128, 128, 0.829);
     
 }
 
 
-.infouser span:last-child{
+.infousermsg{
+    font-size: 12px;
+    color: rgba(128, 128, 128, 0.829);
     text-wrap: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -68,8 +85,11 @@ figure img{
 
 
 .carduser{
-    background-color: green;
     cursor: pointer;
+}
+
+.carduser:hover{
+    background-color: #E8EAEA;
 }
 
 .lore{
@@ -95,10 +115,11 @@ figure img{
 /* sezione della chat con input */
 .rchat{
     min-height: calc(100% - 60px - 54px);
+    background-image: url(./img/mine.jpg);
 }
 .rinput{
     min-height: 40px;
-    background-color: red;
+    background-color: #F3EDE9;
 }
 
 
