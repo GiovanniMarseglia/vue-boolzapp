@@ -180,12 +180,11 @@ const { createApp } = Vue
     methods: {
       removeUser(word){
         this.presente=[]
-        word=word.charAt(0).toUpperCase() + word.slice(1)
         this.contacts.forEach((element, index) =>{
         if(word != ""){
           
         
-          if(element.name.includes(word)){
+          if(element.name.toLowerCase().includes(word.toLowerCase())){
             if(this.presente.includes(index)){
               this.presente=[]
             }
@@ -207,7 +206,7 @@ const { createApp } = Vue
       lstorario(index){
         if(this.contacts[index].messages.length > 0){
         const ora = this.contacts[index].messages[this.contacts[index].messages.length-1].date.split(" ");
-        return ora[1].split(":").slice(0, 2).join(" ");
+        return ora[1].split(":").slice(0, 2).join(":");
         }
       },
       
