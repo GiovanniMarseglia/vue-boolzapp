@@ -227,7 +227,11 @@ const { createApp } = Vue
         event.target.setAttribute("class","cambio1");
       },
       statoup(index){
-        this.stato=index
+        if(this.stato==index){
+          this.stato=null
+        }else{
+          this.stato=index
+        }
         
       },
       removemsg(index){
