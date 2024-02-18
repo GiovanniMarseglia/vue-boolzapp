@@ -11,6 +11,7 @@ const { createApp } = Vue
         ricerca:null,
         posizione: 0,
         newmessage: null,
+        visible:false,
         contacts: [
           {
           name: 'Michele',
